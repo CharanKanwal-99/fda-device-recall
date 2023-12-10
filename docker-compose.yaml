@@ -82,8 +82,8 @@ x-airflow-common:
     DB_NAME: 'dev'
     DB_USER: 'aws_charan'
     DB_PASSWORD: 'Kewaldotuniv1!'
-    DB_HOST: 'redshift-cluster-1.c09jeylcxwnb.us-east-2.redshift.amazonaws.com'
-    DB_PORT: 5432
+    #DB_HOST: 'redshift-cluster-1.c09jeylcxwnb.us-east-2.redshift.amazonaws.com'
+    #DB_PORT: 5432
 
   volumes:
     - ${AIRFLOW_PROJ_DIR:-.}/dags:/opt/airflow/dags
