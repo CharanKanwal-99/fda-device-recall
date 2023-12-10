@@ -13,7 +13,7 @@ def transform_data(**kwargs):
     data.drop(cols_to_drop,axis=1,inplace=True)
     
     df_firm = data_from_warehouse('firm')
-    firm_cols = ['firm','address_1','address_2','city','state']
+    firm_cols = ['firm','address_1','address_2','city','state','postal_code']
     df_firm = check_for_updates(data[firm_cols], df_firm,'firm')
     ordered_cols = ['firm_id','firm','state','city','address_1','address_2','postal_code']
     df_firm = df_firm[ordered_cols]
