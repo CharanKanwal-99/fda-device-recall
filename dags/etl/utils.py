@@ -17,7 +17,8 @@ def load_object(object,path):
 def get_object(file):
     aws_access_key_id = os.getenv('aws_access_key_id')
     aws_secret_access_key = os.getenv('aws_secret_access_key')
-    get_from_cloud(file, aws_access_key_id, aws_secret_access_key)
+    df = get_from_cloud(file, aws_access_key_id, aws_secret_access_key)
+    return df
 
 
 
