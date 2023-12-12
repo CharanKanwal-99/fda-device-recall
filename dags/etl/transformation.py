@@ -1,9 +1,12 @@
 from etl.utils import get_object,load_object, data_from_warehouse
+from db.table_creation import create_table
+import pandas as pd
 
 
 def transform_data(**kwargs):
+    create_table()
     date = kwargs['execution_date'].strftime('%Y-%m-%d')
-    path = f'raw1/{date}_open_fda_raw.csv'
+    path = f'raw/{date}_open_fda_raw.csv'
     data = get_object(path)
     data['recall_id'] = data['cfres_id']
     data['firm'] = data['recalling_firm']
@@ -33,7 +36,7 @@ def transform_data(**kwargs):
     df_status = df_status[status_cols]
     data = data.merge(df_status)
 
-    fact_cols = ['recall_id','firm_id','status_id','cause_id','product_quantity','distribution_pattern','product_code','device_class']
+    fact_cols = ['recall_id','firm_id','status_id','cause_id','product_quantity','product_code','device_class']
 
     data = data[fact_cols]
     date = kwargs['execution_date'].strftime('%Y-%m-%d')
@@ -57,8 +60,7 @@ def check_for_updates(df,df_old,col):
 
     new_values[f'{col}_id'] = range(max_id + 1, max_id + 1 + len(new_values))
 
-    df_old = df_old.append(new_values, ignore_index=True)
-
+    df_old = pd.concat([df_old, new_values],ignore_index=True)
     return df_old
 
 
