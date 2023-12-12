@@ -1,20 +1,18 @@
 from etl.utils import get_object
 from sqlalchemy import create_engine
 import os
-from db.table_creation import create_table
 
 
 def load_data(**kwargs):
-    create_table()
     date = kwargs['execution_date'].strftime('%Y-%m-%d')
     df = get_object(f'transformed/{date}_recall_fct.csv')
     df_firm = get_object(f'transformed/{date}_firm_dim.csv')
     df_status = get_object(f'transformed/{date}_status_dim.csv')
     df_cause = get_object(f'transformed/{date}_cause_dim.csv')
 
-    db_url = 'postgresql+psycopg2://aws_charan:Kewaldotuniv1!@redshift-cluster-1.c09jeylcxwnb.us-east-2.redshift.amazonaws.com:5439/openfda'
+    db_url = 'postgresql+psycopg2://aws_charan:Kanwaldotuniv1!@redshift-cluster-1.c09jeylcxwnb.us-east-2.redshift.amazonaws.com:5439/openfda'
     engine = create_engine(db_url)
-
+    
     df.to_sql('recall', engine, index=False,if_exists='append')
     df_firm.to_sql('firm', engine, index=False,if_exists='replace')
     df_status.to_sql('status', engine, index=False,if_exists='replace')
