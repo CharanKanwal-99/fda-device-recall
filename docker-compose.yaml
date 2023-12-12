@@ -78,12 +78,10 @@ x-airflow-common:
     _PIP_ADDITIONAL_REQUIREMENTS: "requests pyarrow>=10.0.1 pandas sqlalchemy boto3 psycopg2-binary "
     aws_access_key_id : 'AKIAZBLW2ZDLMULHHNP5'
     aws_secret_access_key : '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'
-    db_url : 'postgresql+psycopg2://aws_charan:Kewaldotuniv1!@redshift-cluster-1.c09jeylcxwnb.us-east-2.redshift.amazonaws.com:5439/dev'
-    DB_NAME: 'dev'
+    db_url : 'postgresql+psycopg2://aws_charan:Kanwaldotuniv1!@redshift-cluster-1.c09jeylcxwnb.us-east-2.redshift.amazonaws.com:5439/openfda'
+    DB_NAME: 'openfda'
     DB_USER: 'aws_charan'
-    DB_PASSWORD: 'Kewaldotuniv1!'
-    #DB_HOST: 'redshift-cluster-1.c09jeylcxwnb.us-east-2.redshift.amazonaws.com'
-    #DB_PORT: 5432
+    DB_PASSWORD: 'Kanwaldotuniv1!'
 
   volumes:
     - ${AIRFLOW_PROJ_DIR:-.}/dags:/opt/airflow/dags
