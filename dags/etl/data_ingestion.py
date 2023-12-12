@@ -11,8 +11,8 @@ def get_data(**kwargs):
     # Initialize an empty dataframe to store the data
     final_df = pd.DataFrame()
 
-    # Make 2 API requests and append data to the dataframe each time
-    for i in range(2):
+    # Make 10 API requests and append data to the dataframe each time
+    for i in range(10):
         response = requests.get(api_endpoint, params=params)
 
         if response.status_code == 200:
@@ -20,7 +20,7 @@ def get_data(**kwargs):
             data = data['results']
             df = pd.DataFrame(data)
             df['device_class'] = data[0]['openfda']['device_class']
-            final_df = final_df.append(df, ignore_index=True)
+            final_df = pd.concat([final_df,df], ignore_index=True)
 
     field_names = ["cfres_id",
                    "recall_status",
@@ -33,11 +33,10 @@ def get_data(**kwargs):
                    "product_code",
                    "root_cause_description",
                    "product_quantity",
-                   "distribution_pattern",
                    "device_class"]
     
     # Export the final dataframe to a CSV file
     final_df = final_df[field_names]
     date = kwargs['execution_date'].strftime('%Y-%m-%d')
-    path = f'raw1/{date}_open_fda_raw.csv'
+    path = f'raw/{date}_open_fda_raw.csv'
     load_object(final_df, path)
