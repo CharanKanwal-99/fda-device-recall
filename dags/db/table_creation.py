@@ -18,7 +18,7 @@ def create_table():
     password=DB_PASSWORD,
     database=DB_NAME)
 
-# SQLAlchemy metadata object
+
 
 
     table_queries = ["""CREATE TABLE IF NOT EXISTS firm(
