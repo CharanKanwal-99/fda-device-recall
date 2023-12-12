@@ -8,7 +8,7 @@ from datetime import datetime
 
 with DAG(dag_id = 'open_fda',
          schedule_interval= '@daily',
-         start_date = datetime(2023,12,4)
+         start_date = datetime(2023,12,12)
          ) as dag :
 
     extract = PythonOperator(
