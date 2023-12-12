@@ -5,7 +5,6 @@ from io import StringIO,BytesIO
 from sqlalchemy import create_engine
 from sqlalchemy.exc import OperationalError
 
-# Replace these values with your AWS credentials and S3 bucket information
 
 
 def load_object(object,path):
@@ -56,11 +55,11 @@ def get_from_cloud(file,aws_access_key_id, aws_secret_access_key):
         df = pd.read_csv(BytesIO(data))
         return df
     except Exception as e:
-        print(f"An error occurred: {e}")
+        print(f"File does not exist: {e}")
         return None
     
 def data_from_warehouse(table):
-    conn_str = 'postgresql+psycopg2://aws_charan:Kewaldotuniv1!@redshift-cluster-1.c09jeylcxwnb.us-east-2.redshift.amazonaws.com:5439/openfda'
+    conn_str = 'postgresql+psycopg2://aws_charan:Kanwaldotuniv1!@redshift-cluster-1.c09jeylcxwnb.us-east-2.redshift.amazonaws.com:5439/openfda'
     try:
         engine = create_engine(conn_str)
         table_name = table
@@ -69,5 +68,6 @@ def data_from_warehouse(table):
     except OperationalError as e:
         df = pd.DataFrame()
     return df
+
 
 
