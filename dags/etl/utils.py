@@ -59,7 +59,7 @@ def get_from_cloud(file,aws_access_key_id, aws_secret_access_key):
         return None
     
 def data_from_warehouse(table):
-    conn_str = 'postgresql+psycopg2://aws_charan:Kanwaldotuniv1!@redshift-cluster-1.c09jeylcxwnb.us-east-2.redshift.amazonaws.com:5439/openfda'
+    conn_str = ''
     try:
         engine = create_engine(conn_str)
         table_name = table
