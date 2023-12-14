@@ -10,7 +10,7 @@ def load_data(**kwargs):
     df_status = get_object(f'transformed/{date}_status_dim.csv')
     df_cause = get_object(f'transformed/{date}_cause_dim.csv')
 
-    db_url = 'postgresql+psycopg2://aws_charan:Kanwaldotuniv1!@redshift-cluster-1.c09jeylcxwnb.us-east-2.redshift.amazonaws.com:5439/openfda'
+    db_url = ''
     engine = create_engine(db_url)
     
     df.to_sql('recall', engine, index=False,if_exists='append')
