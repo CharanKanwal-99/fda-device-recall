@@ -76,12 +76,12 @@ x-airflow-common:
     # WARNING: Use _PIP_ADDITIONAL_REQUIREMENTS option ONLY for a quick checks
     # for other purpose (development, test and especially production usage) build/extend Airflow image.
     _PIP_ADDITIONAL_REQUIREMENTS: "requests pyarrow>=10.0.1 pandas sqlalchemy boto3 psycopg2-binary "
-    aws_access_key_id : 'AKIAZBLW2ZDLMULHHNP5'
-    aws_secret_access_key : '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'
-    db_url : 'postgresql+psycopg2://aws_charan:Kanwaldotuniv1!@redshift-cluster-1.c09jeylcxwnb.us-east-2.redshift.amazonaws.com:5439/openfda'
-    DB_NAME: 'openfda'
-    DB_USER: 'aws_charan'
-    DB_PASSWORD: 'Kanwaldotuniv1!'
+    aws_access_key_id : ''
+    aws_secret_access_key : ''
+    db_url : ''
+    DB_NAME: ''
+    DB_USER: ''
+    DB_PASSWORD: ''
 
   volumes:
     - ${AIRFLOW_PROJ_DIR:-.}/dags:/opt/airflow/dags
