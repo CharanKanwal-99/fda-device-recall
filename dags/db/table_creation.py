@@ -8,7 +8,7 @@ def create_table():
     DB_NAME = os.getenv('DB_NAME')
     DB_USER = os.getenv('DB_USER')
     DB_PASSWORD = os.getenv('DB_PASSWORD')
-    DB_HOST = 'redshift-cluster-1.c09jeylcxwnb.us-east-2.redshift.amazonaws.com'
+    DB_HOST = ''
     DB_PORT = 5439
     
     conn = psycopg2.connect(
